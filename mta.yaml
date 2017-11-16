@@ -1,0 +1,24 @@
+ID: CustomersS4HExtensionProposalApp
+_schema-version: '2.0'
+version: 0.0.1
+modules:
+  - name: proposalapp
+    type: html5
+    path: proposalapp
+    parameters:
+      disk_quota: 256M
+      memory: 256M
+      host: i045112trial-proposalapp
+    properties:
+      TENANT_HOST_PATTERN: "^(.*)-proposalapp.cfapps.eu10.hana.ondemand.com"
+      destinations: [{ "name": "java_be_S4ExtensionCP", "url": "https://i045112trial-trial-test-java.cfapps.eu10.hana.ondemand.com", "forwardAuthToken": true }]       
+    build-parameters:
+      builder: grunt
+    requires:
+      - name: uaa-teched     
+resources:
+  - name: uaa-teched
+    type: com.sap.xs.uaa-space
+   
+
+              

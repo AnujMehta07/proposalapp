@@ -1,0 +1,78 @@
+{
+  "welcomeFile": "/webapp/index.html",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "application",
+        "name": "sapui5preview",
+        "entryPath": "/resources",
+        "version": "1.46.8"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.46.8"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "application",
+        "name": "sapui5preview",
+        "entryPath": "/test-resources",
+        "version": "1.46.8"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.46.8"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+     "path": "/services/userapi", 
+     "target": {
+       "type": "service",
+       "name": "userapi"
+     },
+     "description": "Access to HCP user api"
+	},
+    {
+      "path": "/destinations/AnanthV4",
+      "target": {
+        "type": "destination",
+        "name": "AnanthV4"
+      },
+      "description": "Persephone Odata"
+    }
+  ],
+  "sendWelcomeFileRedirect": true,
+  "cacheControl": [
+    {
+      "directive": "private",
+      "maxAge": 0,
+      "path": "**.html"
+    },
+    {
+      "directive": "private",
+      "maxAge": 0,
+      "path": "sap-ui-cachebuster-info.json"
+    },
+    {
+      "directive": "public",
+      "maxAge": 31536000
+    }
+  ]
+}

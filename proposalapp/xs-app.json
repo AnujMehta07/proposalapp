@@ -1,0 +1,20 @@
+{
+  "welcomeFile": "/proposalapp/index.html",
+  "authenticationMethod": "route",
+  "routes": [
+  	{
+		"source": "^/destinations/AnanthV4/(.*)$",
+		"target": "$1",
+		"destination": "java_be_S4ExtensionCP",
+		"authenticationType": "xsuaa",
+		"csrfProtection": false
+		
+	},
+    {
+      "source": "^/proposalapp/(.*)$",
+      "target": "$1",
+      "localDir": "webapp",
+      "authenticationType": "xsuaa"
+  }
+  ]
+}

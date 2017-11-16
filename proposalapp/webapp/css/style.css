@@ -1,0 +1,15 @@
+/* Enter your custom styles here */
+.sap-desktop .tableVerticalScroll{
+    overflow-y:scroll;
+	height:100%; 
+}
+.sap-desktop .tableVerticalScroll2{
+    overflow-y:scroll;
+	height:40%; 
+}
+.sap-desktop .tableMargin{
+	 margin-top: 3em;
+}
+.sap-desktop .paddingHeader{
+    padding-bottom: 1em;
+}

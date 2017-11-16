@@ -1,0 +1,146 @@
+<mvc:View controllerName="PersephonePersephone.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+	<App>
+		<pages>
+			<Page title="{i18n>title}" enableScrolling="false">
+				<content>
+					<IconTabBar id="idIconTabBar" headerMode="Inline" upperCase="true" stretchContentHeight="true" class="sapUiResponsiveContentPadding" select = "onTabPressed">
+						<items>
+							<IconTabFilter key = "Customers" text="Customers">
+								<layout:VerticalLayout width="auto" class="tableVerticalScroll">
+									<layout:content>
+										<Table id="customersTable" busyIndicatorDelay="{worklistView>/tableBusyDelay}" class="sapUiNoMarginTop"
+											noDataText="{worklistView>/tableNoDataText2}" updateFinished="onUpdateFinished" width="auto" items="{ path: '/Customers'}">
+											<!--<headerToolbar>
+									<Toolbar>
+										<Title text="Existing Customers"/>
+										<ToolbarSpacer/>
+									</Toolbar>
+								</headerToolbar>-->
+											<columns>
+												<!--<Column demandPopin="false" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="false" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="false" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="false" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="false" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="false" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="false" minScreenWidth="Tablet"/>-->
+												<Column demandPopin="false" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>Customer ID}"/>
+												</Column>
+												<Column hAlign="Begin" demandPopin="false" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>First Name}"/>
+												</Column>
+												<Column hAlign="Begin" demandPopin="false" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>Last Name}"/>
+												</Column>
+												<Column hAlign="Begin" demandPopin="false" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>Language}"/>
+												</Column>
+												<Column hAlign="Begin" demandPopin="true" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>Customer Country}"/>
+												</Column>
+												<Column hAlign="Begin" demandPopin="true" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>Customer City}"/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem press="onPress" type="Active">
+													<cells>
+														<ObjectIdentifier title="{CustomerId}"/>
+														<Text text="{CustomerFirstName}"/>
+														<Text text="{CustomerLastName}"/>
+														<Text text="{CustomerLanguage}"/>
+														<Text text="{path : 'CustomerCountry', formatter: '.formatCountryCode' }"/>
+														<Text text="{CustomerCity}"/>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</layout:content>
+								</layout:VerticalLayout>
+							</IconTabFilter>
+							<IconTabFilter key = "Proposals" text="My Proposals" >
+								<layout:VerticalLayout width="auto" class="tableVerticalScroll">
+									<layout:content>
+										<Table id="table" busyIndicatorDelay="{worklistView>/tableBusyDelay}" class="sapUiNoMarginTop" noDataText="No Proposals available"
+											updateFinished="onUpdateFinished" width="auto" mode="SingleSelectLeft"
+											items="{ path: '/ProposedCustomers', $$updateGroupId: 'proposalGroup'}" selectionChange="onTableItemSelectionChange">
+											<!--<headerToolbar>
+									<Toolbar>
+										<ToolbarSpacer/>
+										<Button icon="sap-icon://delete" press="onPressDeleteProposal"/>
+									</Toolbar>
+								</headerToolbar>-->
+											<columns>
+												<!--<Column demandPopin="false" minScreenWidth="Tablet"/>-->
+												<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet"/>
+									<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet"/>
+									<Column demandPopin="true" minScreenWidth="Tablet" hAlign="Center"/>-->
+												<Column id="ProductIdColumn" demandPopin="false" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>Customer ID}"/>
+												</Column>
+												<Column id="firstNameColumn" demandPopin="true" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>First Name}"/>
+												</Column>
+												<Column id="lastNameColumn" demandPopin="true" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>Last Name}"/>
+												</Column>
+												<Column id="CityColumn" demandPopin="true" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>City}"/>
+												</Column>
+												<Column id="CountryColumn" demandPopin="true" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>Country}"/>
+												</Column>
+												<Column id="ProposedByColumn" demandPopin="true" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>Proposed By}"/>
+												</Column>
+												<Column id="ApprovedByColumn" demandPopin="true" minScreenWidth="Tablet">
+													<Label design="Bold" text="{i18n>Approved By}"/>
+												</Column>
+												<Column id="statusColumn" minScreenWidth="Tablet" hAlign="Begin">
+													<Label design="Bold" text="{i18n>Status}"/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem press="onPress" type="Active">
+													<cells>
+														<!--<ObjectIdentifier title="{ProposalId}"/>-->
+														<Text text="{CustomerId}"/>
+														<Text text="{FirstName}"/>
+														<Text text="{LastName}"/>
+														<Text text="{City}"/>
+														<Text text="{path : 'Country', formatter: '.formatCountryCode' }"/>
+														<Text text="{ProposedBy}"/>
+														<Text text="{ApprovedBy}"/>
+														<ObjectStatus id="ApprovalStatus" text="{ApprovalStatus}" state="{ path: 'ApprovalStatus', formatter: '.status' }"/>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</layout:content>
+								</layout:VerticalLayout>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<OverflowToolbar id="otbFooter">
+						<ToolbarSpacer/>
+						<Button id = "createProposal" type="Accept" text="Create Proposal" press="openCreateProposal" visible = "false">
+							<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+						</Button>
+						<Button id = "deleteProposal" type="Reject" text="Delete Proposal" press="onPressDeleteProposal" visible = "false"/>
+						<!--<Button type="Reject" text="Remove">
+							<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+						</Button>-->
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

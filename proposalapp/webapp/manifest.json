@@ -1,0 +1,105 @@
+{
+	"_version": "1.5.0",
+	"sap.app": {
+		"id": "PersephonePersephone",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"ach": "ach",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.38.11"
+		},
+		"dataSources": {
+			"userinfo": {
+				"uri": "/services/userapi/currentUser",
+				"type": "JSON"
+			},
+			"odata": {
+				"uri": "/destinations/AnanthV4/odata/v4/CustomerService/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "PersephonePersephone.view.View1",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "PersephonePersephone.i18n.i18n"
+				}
+			},
+			"user": {
+				"dataSource": "userinfo"
+			},
+			"": {
+				"dataSource": "odata",
+				"settings": {
+					"synchronizationMode": "None",
+					"groupId": "$direct",
+					"updateGroupId": "proposalGroup"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"handleValidation": true
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}
